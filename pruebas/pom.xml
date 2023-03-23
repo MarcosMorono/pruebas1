@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ws</groupId>
+  <artifactId>pruebas</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Archetype - pruebas</name>
+  <url>http://maven.apache.org</url>
+  	<packaging>pom</packaging>
+  	<properties>
+
+		<!-- Caracteristicas proyecto -->
+		<java.version>1.8</java.version>
+		<!-- Sobreescritura de versiones de parent_pom -->
+		<javax-validation-api.version>1.1.0.Final</javax-validation-api.version>
+		<org.springframework-version>4.3.25.RELEASE</org.springframework-version>
+		<org.springframework.security-version>4.2.13.RELEASE</org.springframework.security-version>
+		<spring-data-jpa.version>1.11.23.RELEASE</spring-data-jpa.version>
+		<aspectj.version>1.9.2</aspectj.version>
+		<hibernate-entitymanager.version>5.2.18.Final</hibernate-entitymanager.version>
+		<hibernate-validator.version>5.4.3.Final</hibernate-validator.version>
+		<org.slf4j-version>1.7.28</org.slf4j-version>
+		<log4j.version>2.16.0</log4j.version>
+		<mockito.version>2.23.0</mockito.version>
+
+	</properties>
+	<!-- Este POM empregase como agregacion dos modulos da aplicaci?n. -->
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Spring Framework -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${org.springframework-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-bom</artifactId>
+				<version>${org.springframework.security-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${org.springframework-version}</version>
+				<exclusions>
+					<!-- Exclude Commons Logging in favor of SLF4j -->
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-jpa</artifactId>
+				<version>${spring-data-jpa.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjrt</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- CAS (forzamos actualizacion de dependencia Spring Security) -->
+			<dependency>
+				<groupId>org.jasig.cas.client</groupId>
+				<artifactId>cas-client-core</artifactId>
+				<version>3.5.1</version>
+			</dependency>
+
+			<!-- JSON -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.9.10</version>
+			</dependency>
+
+			<!-- Hibernate -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate-entitymanager.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.geronimo.specs</groupId>
+						<artifactId>geronimo-jta_1.1_spec</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate-validator.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.geronimo.specs</groupId>
+						<artifactId>geronimo-jta_1.1_spec</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- View -->
+			<dependency>
+				<groupId>org.thymeleaf</groupId>
+				<artifactId>thymeleaf-spring4</artifactId>
+				<version>3.0.11.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.thymeleaf.extras</groupId>
+				<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+				<version>3.0.4.RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.jpenren</groupId>
+				<artifactId>thymeleaf-spring-data-dialect</artifactId>
+				<version>3.4.1</version>
+			</dependency>
+
+			<!-- Utils -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>org.modelmapper</groupId>
+				<artifactId>modelmapper</artifactId>
+				<version>2.3.5</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tika</groupId>
+				<artifactId>tika-core</artifactId>
+				<version>1.22</version>
+			</dependency>
+
+			<!-- Cach? -->
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache</artifactId>
+				<version>2.10.6</version>
+			</dependency>
+
+			<!-- Log -->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-slf4j-impl</artifactId>
+				<version>${log4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-web</artifactId>
+				<version>${log4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>${log4j.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+
+			<!-- Transversais Amtega -->
+	
+
+			<!-- Testing -->
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.4.197</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.dbunit</groupId>
+				<artifactId>dbunit</artifactId>
+				<version>2.5.4</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.github.springtestdbunit</groupId>
+				<artifactId>spring-test-dbunit</artifactId>
+				<version>1.3.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>es.xunta.amtega.transversal</groupId>
+				<artifactId>amtega-common-test</artifactId>
+				<version>1.0.0</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tomcat</groupId>
+				<artifactId>tomcat-jasper-el</artifactId>
+				<version>8.5.32</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Java Specs -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>javax.transaction-api</artifactId>
+				<version>1.2</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<profiles>
+		<profile>
+			<id>package-environment-configuration</id>
+			<activation>
+				<property>
+					<name>!apps_env</name>
+				</property>
+			</activation>
+			<properties>
+				<!-- Define a variable 'apps_env' por defecto en caso de no exitir apps_env 
+					que es lo que ocurre en desarrollo si ejecutamos mvn ->generate resources 
+					ó mvn clean install Recuerda que eata variable esta en Catalina.propeties 
+					ysolo es accesible cuando desplegamos la aplicacion. Otra cosa srñia tenerla 
+					definida como variable de entorno del sistema y no una variable ligada a 
+					que el servidor de aplicaciones este ON -->
+				<apps_env>local</apps_env>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Versi?n usadas dos plugins de Maven -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>3.0.0-M1</version>
+				</plugin>
+				<!-- Configuraci?n do plugin de Maven para Eclipse (M2Eclipse) -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<!-- Decimoslle a Eclipse que ignore o plugin de toolchains, evitando 
+									 o erro "Plugin execution not covered by lifecycle configuration" -->
+								<!-- Na compilacion, Maven seguir executando o plugin de toolchain, 
+									 si o deshabilitamos a nivel IDE 
+									-->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-toolchains-plugin</artifactId>
+										<versionRange>[1.0,)</versionRange>
+										<goals>
+											<goal>toolchain</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore/>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>../pruebas-config/src/main/resources/${apps_env}/pruebas.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>pruebas-war</module>
+		<module>pruebas-config</module>
+		<module>pruebas-scripts-ddl</module>
+		<module>pruebas-resource</module>
+  </modules>
+</project>

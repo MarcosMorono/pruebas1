@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/security"
+	th:fragment="layout (content, menu, links, scripts)">
+
+<head>
+<title >MAQINT - Xunta de Galicia:
+	Layout Page</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+<meta name="msapplication-TileImage"
+	th:content="@{/resources/images/favicon/ms-icon-144x144.png}">
+<link rel="apple-touch-icon" sizes="57x57"
+	th:href="@{/resources/images/favicon/apple-icon-57x57.png}">
+<link rel="apple-touch-icon" sizes="60x60"
+	th:href="@{/resources/images/favicon/apple-icon-60x60.png}">
+<link rel="apple-touch-icon" sizes="72x72"
+	th:href="@{/resources/images/favicon/apple-icon-72x72.png}">
+<link rel="apple-touch-icon" sizes="76x76"
+	th:href="@{/resources/images/favicon/apple-icon-76x76.png}">
+<link rel="apple-touch-icon" sizes="114x114"
+	th:href="@{/resources/images/favicon/apple-icon-114x114.png}">
+<link rel="apple-touch-icon" sizes="120x120"
+	th:href="@{/resources/images/favicon/apple-icon-120x120.png}">
+<link rel="apple-touch-icon" sizes="144x144"
+	th:href="@{/resources/images/favicon/apple-icon-144x144.png}">
+<link rel="apple-touch-icon" sizes="152x152"
+	th:href="@{/resources/images/favicon/apple-icon-152x152.png}">
+<link rel="apple-touch-icon" sizes="180x180"
+	th:href="@{/resources/images/favicon/apple-icon-180x180.png}">
+<link rel="icon" type="image/png" sizes="192x192"
+	th:href="@{/resources/images/favicon/android-icon-192x192.png}">
+<link rel="icon" type="image/png" sizes="32x32"
+	th:href="@{/resources/images/favicon/favicon-32x32.png}">
+<link rel="icon" type="image/png" sizes="96x96"
+	th:href="@{/resources/images/favicon/favicon-96x96.png}">
+<link rel="icon" type="image/png" sizes="16x16"
+	th:href="@{/resources/images/favicon/favicon-16x16.png}">
+<link rel="shortcut icon" type="image/x-icon"
+	th:href="@{/resources/images/favicon/favicon.ico}">
+<link rel="manifest" th:href="@{/manifest.json}">
+
+<!--/* Layout Common Css */-->
+<link rel="stylesheet"
+	th:href="@{/resources/maqint/2.0.4/maqint/maqint.css}">
+<link rel="stylesheet" th:href="@{/resources/css/custom.css}">
+<link rel="stylesheet" th:href="@{/resources/css/estilos.css}">
+<link rel="stylesheet" th:href="@{/resources/css/datatables.min.css}">
+<!--/* Plugins Css */-->
+
+<!--/* HTML Imports */-->
+
+<!--/* View Css */-->
+<th:block th:replace="${links}" />
+
+
+</head>
+
+<body>
+	<!--/* Loader */-->
+	<div id="page-loader">
+		<div class="dot"></div>
+		<div class="dot"></div>
+	</div>
+	<div id="main-wrapper">
+	
+
+		<header th:replace="~{layout/header :: header}"></header>
+
+		<div id="main-content" class="row" role="main">
+			<section id="basic-form" class="page">
+				
+
+				<th:block th:replace="${content}" />
+
+			</section>
+		</div>
+	</div>
+
+	<th:block>
+		<!--/* Layout Common Scripts */-->
+		<script th:src="@{/resources/maqint/2.0.4/maqint/maqint.js}"></script>
+		<script th:src="@{/resources/js/main.js}"></script>
+		<script th:src="@{/resources/js/maqint-config.js}"></script>
+			
+<!-- 			<script th:src="@{/resources/js/xilax.js}"></script>
+ -->
+		<script th:src="@{/resources/js/datatable/datatables.min.js}"></script>
+		<script th:src="@{/resources/js/datatable/dataTables.buttons.min.js}"></script>
+		<script th:src="@{/resources/js/datatable/buttons.html5.min.js}"></script>
+		<script
+			th:src="@{/resources/js/datatable/} + datatables_lang + #{sufijo_js} + .js"
+			charset="utf-8"></script>
+
+		<script th:src="@{/resources/js/datatable/jszip.min.js}"></script>
+		<script th:src="@{/resources/js/datatable/pdfmake.min.js}"></script>
+		<script th:src="@{/resources/js/datatable/vfs_fonts.js}"></script>
+		<script th:src="@{/resources/js/datatable/buttons.print.min.js}"></script>
+	
+		<!--/* Plugins Scripts */-->
+	
+		<!--/* View Scripts */-->
+		<th:block th:replace="${scripts}" />
+		
+			
+	</th:block>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" >
+
+	<head>
+    	<title>Timeout</title>
+    	<link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon/favicon.ico}">
+    </head>
+    
+    <body>
+        <div th:fragment="header" id="session-timeout">
+            <div id="session-timeout-warning-display" class="top-display row" style="display:none">
+                <div class="top-display-content">
+                    <em class="fa fa-exclamation-circle">
+                        <span class="sr-only">Timeout</span>
+                    </em>
+                    <span th:text="#{layout.header.timeout.warning}"></span>
+                </div>
+            </div>
+            <div id="session-timeout-timedout-display" class="top-display top-display-orange row" style="display:none">
+                <div class="top-display-content">
+                    <em class="fa fa-exclamation-circle">
+                        <span class="sr-only">Timeout</span>
+                    </em>
+                    <span th:text="#{layout.header.timeout.timedout}"></span>
+                </div>
+            </div>
+        </div>
+        
+        <th:block th:fragment="script">
+            <script th:inline="javascript">
+                // Control de timeout
+                var SESSION_TIMEOUT = [[${#session==null ? 0 : #session.getMaxInactiveInterval()}]];
+                if(SESSION_TIMEOUT) {
+                    var timeout = new Date().getTime() + (SESSION_TIMEOUT*1000);
+                    var warning = timeout - 15*60*1000; //15m
+                    setInterval(function() {
+                        var now = new Date().getTime();
+                        if(now>timeout) {
+                            $('#session-timeout-warning-display').slideUp();
+                            $('#session-timeout-timedout-display').slideDown();
+                        } else if(now>warning) {
+                            $('#session-timeout-warning-display').slideDown();
+                        }
+                    }, 1000);
+                }
+            </script>
+        </th:block>
+    </body>
+</html>

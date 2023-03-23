@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>    
+    <title th:text="#{xilax.frgamentos.title}">Fragmento</title>  
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon/favicon.ico}">  
+ </head>  
+<body>
+<div th:fragment="i18n">
+    <h1 style="margin-bottom: 2px;"></h1>
+     <h1>I18n</h1>
+		<ul>
+			<li >
+				<a href="?mylocale=es">CASTELLANO </a>
+			</li>
+			<li class="on">
+				<a href="?mylocale=gl">GALEGO<span>|</span></a>
+			</li>
+		</ul>
+</div>		
+</body>
+</html>

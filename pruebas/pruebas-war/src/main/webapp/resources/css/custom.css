@@ -1,0 +1,47 @@
+/*! Arquetipo: Modificaciones en la maqueta  */
+.celda-titulo{
+    word-wrap: break-word;
+    max-width:250px;
+}
+
+.celda-documento{    
+    width:80px;
+}
+
+pre {
+    white-space: pre-wrap; 
+    word-break: normal;
+}
+
+/*Advertencias de sesion*/
+.top-display .top-display-content {
+    text-align: center;
+    font-size: 1.05em;
+    line-height: 38px;
+    padding: 0 0 0 12.66667px;
+    color: #fff;
+    background-color: #019ee0;
+    text-shadow: -1px -1px #017aad;
+    box-shadow: -8px -1px 8px 0 rgba(0,0,0,.6);
+    border: 0 solid #017aad;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+.top-display-orange .top-display-content {
+    background-color: #f0ad4e;
+    text-shadow: -1px -1px #775d00;
+    border-color: #775d00;
+}
+
+
+@media (max-width:800px) {
+	aside#left-menu.menu-hidden {
+	    left: -250px;
+	    overflow: visible;
+	}
+	
+	#content.page-content{
+    	margin-left: 0px !important;
+	}
+}
+

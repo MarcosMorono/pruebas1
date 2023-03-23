@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/default :: layout (~{::#content}, 'documentos', _, ~{::#scripts})}">
+
+<body>
+	<div id='content'>
+		<h1 th:text="${saludo}">Hola ruel</h1>
+	</div>
+	<div id='scripts'></div>
+
+</body>
+</html>

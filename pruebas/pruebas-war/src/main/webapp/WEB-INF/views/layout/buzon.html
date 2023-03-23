@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout/default :: layout (~{::#content}, 'documentos',  _, ~{::#scripts})}">
+
+ 
+<head>    
+    <title th:text="#{xilax.frgamentos.title}">Fragmento</title>  
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon/favicon.ico}">  
+ </head>  
+<body>
+
+
+	<div id="content" class="page-content">
+
+		<fieldset class="capaAvisos">
+			<legend>
+				<span th:text="#{xilax.buzon.titulo}"></span>
+
+			</legend>
+		</fieldset>
+	<div class="form-group text-center">
+
+			<div class="col-xs-12 text-center">
+
+				<a href="javascript: location.reload()" style='align: right;'>
+					<button type="button" class="btn btn-success ">
+						<span class="glyphicon glyphicon-refresh"></span> <span
+							th:text="#{xilax.boton.refresh}"> </span>
+					</button>
+				</a> <a th:href="@{/back}" style='align: right;'>
+					<button type="button" class="btn btn-info">
+						<span class="glyphicon glyphicon-circle-arrow-left"></span> <span
+							th:text="#{avisos.boton.voltar}"></span>
+					</button>
+				</a>
+			</div>
+		</div>
+		<amtega-buzon-informes> </amtega-buzon-informes>
+		<amtega-informe-consultar></amtega-informe-consultar>
+
+
+	
+	</div>
+	<div id="scripts">
+		<script th:src="@{/resources/webcomponentsjs/webcomponents-lite.js}"></script>
+	</div>
+</body>
+</html>

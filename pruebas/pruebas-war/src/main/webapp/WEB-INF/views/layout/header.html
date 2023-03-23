@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/sec">
+
+<head>
+<title>Header</title>
+<link rel="shortcut icon" type="image/x-icon"
+	th:href="@{/resources/images/favicon/favicon.ico}">
+</head>
+
+<body>
+	<header th:fragment="header" id="main-header" class="row">
+		<div id="header-controls">
+			<div id="header-logo">
+				<a th:href="@{/}" href="#"> <!-- <img th:src="@{/resources/images/app-logo.png}" alt="Logo aplicacion" th:alt="#{alt.logo.aplicacion(${#strings.toUpperCase(executionContext.appCode)})}"> -->
+					<img th:src="@{/resources/images/xilax_app.png}"
+					alt="Logo aplicacion"></a>
+			</div>
+		</div>
+	</header>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+    	<title>Sidebar</title>
+    	<link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon/favicon.ico}">
+    </head>
+    
+    <body>
+        <ul>
+            <!--/* Fragmento para los items del menú generados con plugins */-->
+            <li th:fragment="menuItemPlugin(item, parentId)" th:if="${item.isVisible(#httpServletRequest)}" th:class="${item.getEntries(#locale).isEmpty() && item.getId()==menu ? 'active' : ''}" th:title="${item.getTitle(#locale)}" data-toggle="tooltip">
+                
+                <!--/* Entrada de menú simple */-->
+                <th:block th:if="${item.getEntries(#locale).isEmpty()}">
+                    <a th:href="${item.getUrl(#httpServletRequest)}" th:target="${item.getTarget()}" th:title="${item.getTitle(#locale)}">
+                        <span th:class="${item.getClassName()}"><span th:text="${item.getText(#locale)}" class="sr-only"></span></span>
+                        <span th:text="${item.getText(#locale)}"></span>
+                    </a>
+                </th:block>
+                
+                <!--/* Entrada de menú con menú anidado. El id de los elementos del menú anidado debe comenzar con el id del item padre, p.ej.: (padre) configuracion, (submenú) configuracion-entrada1 */-->
+                <th:block th:unless="${item.getEntries(#locale).isEmpty()}" th:with="selected=${menu.startsWith(item.getId())}, nodeId=${item.getId()+'-entries'}">
+                    <a href="#" data-toggle="collapse" th:data-target="${'#'+nodeId}" th:data-parent="${'#'+parentId}" th:attr="aria-expanded=${selected ? 'true' : ''}" th:title="${item.getTitle(#locale)}">
+                        <span th:class="${item.getClassName()}"><span class="sr-only" th:text="${item.getText(#locale)}"></span></span>
+                        <span th:text="${item.getText(#locale)}"></span>
+                        <span class="caret caret-right"></span>
+                    </a>
+                    <ul class="nav nav-pills nav-stacked left-submenu collapse" th:id="${nodeId}" th:classappend="${selected ? 'in' : ''}" th:attr="aria-expanded=${selected ? 'true' : ''}">
+                        <th:block th:each="entry : ${item.getEntries(#locale)}">
+                            <li th:replace="~{layout/sidebar::menuItemPlugin(${entry}, ${nodeId})}" />
+                        </th:block>
+                    </ul>
+                </th:block>
+                
+            </li>
+        </ul>
+    </body>
+</html>

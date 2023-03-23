@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/sec"
+	th:replace="~{layout/default :: layout (~{::#content}, 'documentos',  ~{::link}, ~{::#scripts})}">
+
+<head>    
+    <title th:text="#{xilax.frgamentos.title}">Fragmento</title>    
+ 	<link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon/favicon.ico}">
+	<link rel="import"
+		th:href="@{/resources/amtega-informes/2.1/amtega-informe-consultar.html}">
+</head>
+<body>
+	<div id="content" class="page-content">
+
+		<div class="container-full">
+
+			<amtega-informe-consultar></amtega-informe-consultar>
+
+		</div>
+	</div>
+	<div id="scripts">
+		<script th:src="@{/resources/webcomponentsjs/webcomponents-lite.js}"></script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Footer</title>
+<link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon/favicon.ico}">
+</head>
+
+<body>
+
+	<footer th:fragment="footer" id="main-footer" class="row">
+		<div id="footer-logo">
+			<a href="https://www.xunta.gal"> <img
+				th:src="@{/resources/maqint/2.0.4/images/xunta-galicia-logo.png}"
+				alt="Logo Xunta" th:alt="#{alt.logo.xunta}"> <span
+				class="sr-only" th:text="#{layout.footer.link.xunta}">Ligaz贸n
+					谩 web da Xunta</span>
+			</a>
+		</div>
+		<div id="footer-info">
+			<div class="row row-no-gutters">
+				<div id="footer-text" class="hidden-xs col-sm-7">
+					<span th:text="#{layout.footer.servicio}">Servizo prestado
+						pola Presidencia da Xunta de Galicia</span> <br /> <span
+						th:text="#{layout.footer.agencia}">Axencia para a
+						Modernizaci贸n Tecnol贸xica de Galicia (Amtega)</span>
+				</div>
+				<div id="footer-menu" class="col-xs-12 col-sm-5">
+					<ul class="list-inline">
+						<li><em class="glyphicon glyphicon-bookmark"
+							aria-label="Versi贸n"><span class="sr-only">Versi贸n</span></em> <span
+							th:text="${#strings.toUpperCase(executionContext.appCode)}">MAQINT</span>
+							<span th:text="${'Ver. '+executionContext.version}">v0.0.0</span>
+						</li>
+						<li data-toggle="tooltip"
+							th:title="#{layout.footer.ver.info.contacto}"
+							data-placement="left"><a href="#" data-toggle="modal"
+							data-target="#modal-contact-info"> <em
+								class="glyphicon glyphicon-envelope" aria-label="Contacto"><span
+									class="sr-only" th:text="#{layout.footer.contacto}">Contacto</span></em>
+								Contacto
+						</a></li>
+					</ul>
+					<div class="modal fade" id="modal-contact-info" tabindex="-1"
+						role="dialog" aria-labelledby="modal-contact-info-label">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">脳</span>
+									</button>
+									<h4 class="modal-title" id="modal-contact-info-label">
+										<span th:text="#{contact.info.info.contacto}">Informaci髇
+											de Contacto</span>
+									</h4>
+								</div>
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-sm-4 title main-blue">
+											<strong><span th:text="#{contact.info.email}">E-mail</span>:</strong>
+										</div>
+										<div class="col-sm-8 description">
+											<a href="'mailto:'+ #{contact.info.email.value}" th:text='#{contact.info.email.value}'>cau@xunta.gal</a>
+										</div>
+										<!--   <div class="col-sm-8 description"><a href='mailto:cau@xunta.gal'></a></div> -->
+									</div>
+									<div class="row m-t-15">
+										<div class="col-sm-4 title main-blue">
+											<strong><span th:text="#{contact.info.telefono}">Tel閒ono</span>:</strong>
+										</div>
+										<div class="col-sm-8 description" th:text='#{contact.info.telefono.value}'>981 545 288</div>
+<!-- 										<div class="col-sm-8 description"></div> -->
+									</div>
+									<div class="separator border"></div>
+									<div class="row">
+										<div class="col-sm-4 title main-blue">
+											<strong><span th:text="#{contact.info.otra.info}">Outra
+													informaci髇</span>:</strong>
+										</div>
+										<div class="col-sm-8 description text-justify">
+											<span th:text="#{contact.info.otra.info.cau}"></span>
+											<!-- <p>
+												<span th:text="#{contact.info.otra.info.texto1}"></span>
+
+												<span th:text="#{contact.info.otra.info.texto2}"></span>
+											</p> -->
+										</div>
+									</div>
+									<div class="separator border"></div>
+									<div class="text-right">
+										<small> <span th:text="#{layout.footer.agencia}">Axencia
+												para a Modernizaci髇 Tecnol髕ica de Galicia (Amtega)</span><BR /> <strong>Xunta
+												de Galicia</strong>
+										</small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

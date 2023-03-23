@@ -1,0 +1,3 @@
+# Versión do arquetipo ca que foi xerada a aplicación
+archetype.artifactId=amtega-spring-web-tomcat-archetype
+archetype.version=1.0.1
